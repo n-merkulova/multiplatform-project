@@ -1,0 +1,9 @@
+include:
+  project: mnt/ci
+  file: front/ci.yaml
+  ref: ${MNT_CI_REF}
+
+variables:
+  DEV_BASE_DOMAIN: multiplatform-project.ktsdev.ru
+  PROD_DOMAIN: multiplatform-project.ru-prod2.kts.studio
+  USE_DEFAULT_NPMRC: '0'

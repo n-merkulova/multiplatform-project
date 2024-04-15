@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "typeRoots": ["node_modules/@types", "types"],
+    "target": "es6",
+    "allowJs": false,
+    "noEmit": true,
+    "noImplicitAny": true,
+    "jsx": "react",
+    "esModuleInterop": false,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "useDefineForClassFields": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
+    "paths": {
+      "config/*": ["config/*"],
+      "pages/*": ["pages/*"],
+      "shared/*": ["shared/*"],
+      "store/*": ["store/*"],
+      "styles/*": ["styles/*"],
+      "types/*": ["types/*"],
+      "utils/*": ["utils/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
