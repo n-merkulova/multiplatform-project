@@ -1,7 +1,6 @@
 include:
   project: mnt/ci
   file: front/ci.yaml
-  ref: ${MNT_CI_REF}
 
 variables:
   DEV_BASE_DOMAIN: multiplatform-project.ktsdev.ru
