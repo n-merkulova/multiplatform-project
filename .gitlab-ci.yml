@@ -6,3 +6,6 @@ variables:
   DEV_BASE_DOMAIN: multiplatform-project.ktsdev.ru
   PROD_DOMAIN: multiplatform-project.ru-prod2.kts.studio
   USE_DEFAULT_NPMRC: "0"
+  NODE_IMAGE: node:20
+  IMAGE_PREFIX: ""
+
