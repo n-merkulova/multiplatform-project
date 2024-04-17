@@ -2,10 +2,9 @@ import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-// import 'regenerator-runtime/runtime';
+import { PLATFORMS_ROUTER_BASENAMES } from 'config/routing';
 
 import App from './App';
-import { PLATFORMS_ROUTER_BASENAMES } from 'config/routing';
 
 const renderApp = (platform: Platform) => {
   if (process.env.NODE_ENV !== 'PRODUCTION') {

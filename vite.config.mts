@@ -12,60 +12,32 @@ const SRC_PATH = path.resolve(__dirname, 'src');
 const BUILD_PATH = path.resolve(__dirname, 'public');
 const PARTIALS_PATH = path.resolve(__dirname, 'partials');
 
-export enum PLATFORM {
-  vk = 'vk',
-  ok = 'ok',
-  tg = 'tg',
-  iframe = 'iframe',
-}
-
-export type PlatformConfigType = {
-  pathToHTML: string;
-  relativePath: string;
-  platform: PLATFORM;
-};
-
-const PLATFORMS: Record<PLATFORM, PlatformConfigType> = {
-  [PLATFORM.iframe]: {
-    platform: PLATFORM.iframe,
-    relativePath: '/',
-    pathToHTML: '/entries/iframe/index.html',
-  },
-  [PLATFORM.vk]: {
-    platform: PLATFORM.vk,
-    relativePath: '/vk',
-    pathToHTML: '/entries/vk/index.html',
-  },
-  [PLATFORM.ok]: {
-    platform: PLATFORM.ok,
-    relativePath: '/ok',
-    pathToHTML: '/entries/ok/index.html',
-  },
-  [PLATFORM.tg]: {
-    platform: PLATFORM.tg,
-    relativePath: '/tg',
-    pathToHTML: '/entries/tg/index.html',
-  },
-};
-
 const defineEnvVariables = (variables: string[]): Record<string, any> =>
   variables.reduce(
     (accumulator, variable) => ({
       ...accumulator,
       [`process.env.${variable}`]: JSON.stringify(process.env[variable]),
     }),
-    {},
+    {}
   );
 
-// если изменен префикс, не забыть поменять paths в tsconfig.json
 const generateAliases = (directories: string[], prefix = ''): AliasOptions =>
   directories.reduce(
     (accumulator, directory) => ({
       ...accumulator,
       [`${prefix}${directory}`]: path.resolve(SRC_PATH, directory),
     }),
-    {},
+    {}
   );
+
+const PLATFORM_ROUTES = [
+  { platform: 'iframe', route: '/' },
+  { platform: 'ok', route: '/ok' },
+  { platform: 'tg', route: '/tg' },
+  { platform: 'vk', route: '/vk' },
+];
+
+const getPlatformPath = (platform: string) => `/entries/${platform}/index.html`;
 
 const customHistoryApiFallback = () => {
   return {
@@ -73,20 +45,12 @@ const customHistoryApiFallback = () => {
     apply: 'serve',
     configureServer(viteDevServer) {
       return () => {
-        const devPathMaps = Object.entries(PLATFORMS).reduce(
-          (acc, [platform, config]) => {
-            acc[config.relativePath] = config.pathToHTML;
-            return acc;
-          },
-          {},
-        );
-
         viteDevServer.middlewares.use(async (req, res, next) => {
-          for (const path in devPathMaps) {
-            if (req.originalUrl.startsWith(path)) {
-              req.url = devPathMaps[path];
+          PLATFORM_ROUTES.forEach(({ route, platform }) => {
+            if (req.originalUrl.startsWith(route)) {
+              req.url = getPlatformPath(platform);
             }
-          }
+          });
 
           next();
         });
@@ -99,13 +63,6 @@ export default defineConfig(({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   const IS_PROD = process.env.NODE_ENV === 'production';
-
-  const inputBuildPathMappings = Object.fromEntries(
-    Object.entries(PLATFORMS).map(([key, value]) => [
-      value.platform,
-      path.resolve(__dirname, value.pathToHTML),
-    ]),
-  );
 
   return {
     define: defineEnvVariables(['NODE_ENV']),
@@ -142,9 +99,13 @@ export default defineConfig(({ mode }) => {
       assetsDir: 'static',
       sourcemap: 'hidden',
       rollupOptions: {
-        input: {
-          ...inputBuildPathMappings,
-        },
+        input: PLATFORM_ROUTES.reduce(
+          (acc, { platform }) => ({
+            ...acc,
+            [platform]: getPlatformPath(platform),
+          }),
+          {}
+        ),
       },
     },
     plugins: [

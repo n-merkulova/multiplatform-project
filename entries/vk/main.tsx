@@ -1,37 +1,16 @@
 import { startApp } from '../../src/main';
 
 import { VKBridge } from './types';
+import { configureViewSettings } from './utils';
 
 declare global {
   const vkBridge: VKBridge;
 }
 
-const viewSettings = {
-  status_bar_style: 'dark',
-  action_bar_color: '#FFF',
-  navigation_bar_color: '#FFF',
-};
-
 const startVkApp = () => {
-  const setViewSettings = () => {
-    if (vkBridge.supports('VKWebAppSetViewSettings')) {
-      vkBridge.send('VKWebAppSetViewSettings', viewSettings);
-    }
-  };
-
-  const setViewSettingsOnViewRestore = () => {
-    vkBridge.subscribe((event: { detail: { type: string } }) => {
-      if (event.detail.type === 'VKWebAppViewRestore') {
-        setViewSettings();
-      }
-    });
-  };
-
   vkBridge.send('VKWebAppInit', {}).then(() => {
+    configureViewSettings(vkBridge);
     startApp('vk');
-
-    setViewSettings();
-    setViewSettingsOnViewRestore();
   });
 };
 

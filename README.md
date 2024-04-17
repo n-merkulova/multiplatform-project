@@ -1,0 +1,4 @@
+- [VK Mini App](https://vk.com/app51905558)
+- [Telegram Mini App](https://t.me/MultiplatformProjectBot)
+- [Приложение в Одноклассниках](https://ok.ru/app/512002639207)
+- [Web](https://multiplatform-project.ru-prod2.kts.studio/)
