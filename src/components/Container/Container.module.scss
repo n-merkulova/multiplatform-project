@@ -1,0 +1,4 @@
+.container {
+  padding: calc(16px + env(safe-area-inset-top)) 16px
+    calc(20px + env(safe-area-inset-bottom));
+}

@@ -1,7 +1,7 @@
 import { startApp } from '../../src/main';
 
 const startIframeApp = () => {
-  startApp('iframe');
+  startApp('web');
 };
 
 startIframeApp();

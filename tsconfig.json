@@ -19,10 +19,10 @@
     "forceConsistentCasingInFileNames": true,
     "strictPropertyInitialization": false,
     "paths": {
+      "components/*": ["components/*"],
       "config/*": ["config/*"],
       "pages/*": ["pages/*"],
-      "shared/*": ["shared/*"],
-      "store/*": ["store/*"],
+      "stores/*": ["stores/*"],
       "styles/*": ["styles/*"],
       "types/*": ["types/*"],
       "utils/*": ["utils/*"]

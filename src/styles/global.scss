@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  user-select: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
+
+  text-size-adjust: none; /* отключаем увеличение текста на мобильных устройствах */
+  -webkit-overflow-scrolling: touch; /* для плавной прокрутки в старых версиях ios */
+  -webkit-font-smoothing: antialiased; /* сглаживание шрифтов */
+  -webkit-tap-highlight-color: transparent; /* отключаем выделение зажатых элементов в некоторых мобильных браузерах, чтобы не конфликтовало со стилями :active */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+
+  background: white;
+  color: black;
+
+  font-family: sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+textarea {
+  user-select: text;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}

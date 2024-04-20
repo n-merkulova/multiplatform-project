@@ -31,7 +31,7 @@ const generateAliases = (directories: string[], prefix = ''): AliasOptions =>
   );
 
 const PLATFORM_ROUTES = [
-  { platform: 'iframe', route: '/' },
+  { platform: 'web', route: '/' },
   { platform: 'ok', route: '/ok' },
   { platform: 'tg', route: '/tg' },
   { platform: 'vk', route: '/vk' },
@@ -69,13 +69,11 @@ export default defineConfig(({ mode }) => {
     base: '/',
     publicDir: 'static',
     resolve: {
-      // TODO: заменить алиасы
       alias: generateAliases([
+        'components',
         'config',
-        'games',
         'pages',
-        'shared',
-        'store',
+        'stores',
         'styles',
         'types',
         'utils',

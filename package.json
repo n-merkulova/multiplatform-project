@@ -17,6 +17,7 @@
     "autoprefixer": "^10.4.19",
     "eruda": "^3.0.1",
     "prettier": "^3.2.5",
+    "sass": "^1.75.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.8",
     "vite-plugin-handlebars": "^2.0.0",

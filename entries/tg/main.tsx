@@ -7,7 +7,9 @@ declare global {
 }
 
 const startTgApp = () => {
+  Telegram.WebApp.enableClosingConfirmation();
   Telegram.WebApp.expand();
+
   Telegram.WebApp.ready();
 
   startApp('tg');

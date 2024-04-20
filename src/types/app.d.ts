@@ -1,1 +1,1 @@
-type Platform = 'vk' | 'ok' | 'tg' | 'iframe';
+type Platform = 'vk' | 'ok' | 'tg' | 'web';

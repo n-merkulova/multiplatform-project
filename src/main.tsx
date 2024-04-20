@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
-
-import { PLATFORMS_ROUTER_BASENAMES } from 'config/routing';
 
 import App from './App';
 
@@ -16,11 +13,7 @@ const renderApp = (platform: Platform) => {
   }
 
   createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-      <Router basename={PLATFORMS_ROUTER_BASENAMES[platform]}>
-        <App platform={platform} />
-      </Router>
-    </React.StrictMode>
+    <App platform={platform} />
   );
 };
 
