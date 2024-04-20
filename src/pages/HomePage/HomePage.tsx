@@ -19,7 +19,7 @@ export const HomePage: React.FC = () => {
       <div className={s['home-page']}>
         <Logo />
         <p className={s['description']}>
-          Это пример мультиплафторменного приложения
+          Это пример мультиплатформенного приложения
         </p>
         <Button onClick={checkRouting}>Перейти на&nbsp;другую страницу</Button>
       </div>
