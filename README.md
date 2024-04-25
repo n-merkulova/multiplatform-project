@@ -4,7 +4,7 @@
 
 ### Приложения с примерами
 
-- [Приложение в ВКонтакте (VK Mini App)](https://vk.com/app51905558)
+- [Приложение в ВКонтакте (VK Mini App)](https://vk.com/app51908350)
 - [Приложение в Telegram (Telegram Mini App)](https://t.me/MultiplatformProjectBot)
 - [Приложение в Одноклассниках](https://ok.ru/app/512002639207)
 - [Приложение в web-версии](https://multiplatform-project.ru-prod2.kts.studio/)
